@@ -28,6 +28,13 @@ class Solutionb {
         // Return the number of battery replacements
         return replacements;
     }
-
+    public static void main(String[] args) {
+        int[][] serviceCenters = {{10, 60}, {20, 30}, {30, 30}, {60, 40}};
+        int targetMiles = 100;
+        int startChargeCapacity = 10;
+        Solutionb solution = new Solutionb();
+        int result = solution.batteryReplacement(serviceCenters, targetMiles, startChargeCapacity);
+        System.out.println("Result: " + result);
+    }
 
 }
