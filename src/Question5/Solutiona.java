@@ -14,34 +14,39 @@ Output: {{1,10},{2,15},{5,12},{8,0},{9,1},{11,15},{13,0}}
  */
 import java.util.*;
 
+
 public class Solutiona {
-    public static int[][] getBorder(int[][] height) {
-        int n = height.length;
+
+    public int[][] getKeyCoordinates(int[][] height) {
+        // Store the start and end points of each rectangle in a TreeMap
         TreeMap<Integer, Integer> map = new TreeMap<>();
-        for (int i = 0; i < n; i++) {
-            int x1 = height[i][0], x2 = height[i][1], h = height[i][2];
-            map.put(x1, Math.max(map.getOrDefault(x1, 0), h));
-            map.put(x2, Math.max(map.getOrDefault(x2, 0), 0));
+        for (int[] rect : height) {
+            map.put(rect[0], Math.max(map.getOrDefault(rect[0], 0), rect[2]));
+            map.put(rect[1], 0);
         }
-        List<int[]> res = new ArrayList<>();
-        int max = 0;
+
+        // Keep track of the current height while iterating through the map
+        int currHeight = 0;
+        int[][] res = new int[map.size()][2];
+        int i = 0;
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            int x = entry.getKey(), h = entry.getValue();
-            if (max != h) {
-                res.add(new int[]{x, h});
-                max = h;
+            int x = entry.getKey();
+            int h = entry.getValue();
+            if (h != currHeight) {
+                res[i][0] = x;
+                res[i][1] = currHeight = h;
+                i++;
             }
         }
-        int[][] result = new int[res.size()][2];
-        for (int i = 0; i < res.size(); i++) {
-            result[i] = res.get(i);
-        }
-        return result;
+
+        // Return the key coordinates
+        return Arrays.copyOfRange(res, 0, i);
     }
 
     public static void main(String[] args) {
-        int arr[][] = {{1, 4, 10}, {2, 5, 15}, {5, 8, 12}, {9, 11, 1}, {11, 13, 15}};
-        System.out.println(Arrays.deepToString(getBorder(arr)));
+        Solutiona obj = new Solutiona() ;
+        int[][] height = {{1,4,10},{2,5,15},{5,8,12},{9,11,1},{11,13,15}};
+        int[][] res = obj.getKeyCoordinates(height);
+        System.out.println(Arrays.deepToString(res));
     }
 }
-
