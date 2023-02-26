@@ -1,6 +1,9 @@
 package Question7;
 
+/*
+b)	Write multithreaded web crawler
 
+ */
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;

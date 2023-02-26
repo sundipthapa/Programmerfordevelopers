@@ -1,8 +1,10 @@
 package Question7;
-
 import java.util.Date;
 import java.util.Random;
 
+/*
+a)	Implement multi-threaded algorithm to multiply n*n matrix.
+ */
 public class MatrixMultiplications {
 
     public static void main(String[] args) {

@@ -1,5 +1,10 @@
 package Question4;
+/*
 
+b)	Given a linked list containing an integer value, return the number of steps required to sort an array in ascending order by eliminating elements at each step
+Note: at each step remove element a[i] where a[i-1]> a[i]
+
+ */
 class Solutionb {
     public int sortArray(int[] nums) {
         // Get the length of the array
